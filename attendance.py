@@ -4,6 +4,9 @@ def take_attendance(day):
     attendance = {}
     for roll_no in range(1, 73):
         status = input(f"Is student with roll number {roll_no} present? (y/n): ").strip().lower()
+        if status == "stop":
+            print("Stopping attendance entry early...")
+            break
         attendance[roll_no] = status == 'y'
     
     with open(f"{day}.txt", "w") as file:
@@ -72,3 +75,4 @@ def menu():
 
 if __name__ == "__main__":
     menu()
+
