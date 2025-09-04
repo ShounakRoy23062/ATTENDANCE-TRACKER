@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farm Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div class="landing-page" id="landingPage">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>SmartFarm</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#contact">Contact</a>
+                <button class="login-btn" onclick="showLoginModal()">Login</button>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <h1>Welcome to Smart Farm Management</h1>
+            <p>Revolutionizing farming with smart technology</p>
+            <button onclick="showLoginModal()">Get Started</button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <h2>Login to SmartFarm</h2>
+            <div class="login-options">
+                <button class="google-login">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <button class="phone-login">
+                    <i class="fas fa-phone"></i> Continue with Phone
+                </button>
+            </div>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showSignupModal()">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Dashboard (Initially Hidden) -->
+    <div class="dashboard" id="dashboard" style="display: none;">
+        <nav class="dashboard-nav">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>SmartFarm</span>
+            </div>
+            <div class="dashboard-controls">
+                <div class="left-controls">
+                    <button class="menu-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="center-controls">
+                    <span class="dashboard-title">Smart Farm Dashboard</span>
+                </div>
+                <div class="right-controls">
+                    <div class="language-select-container">
+                        <i class="fas fa-globe"></i>
+                        <select id="languageSelect">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी (Hindi)</option>
+                            <option value="mr">मराठी (Marathi)</option>
+                            <option value="bn">বাংলা (Bengali)</option>
+                            <option value="te">తెలుగు (Telugu)</option>
+                            <option value="ta">தமிழ் (Tamil)</option>
+                            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                            <option value="gu">ગુજરાતી (Gujarati)</option>
+                            <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                            <option value="ml">മലയാളം (Malayalam)</option>
+                            <option value="or">ଓଡ଼ିଆ (Odia)</option>
+                        </select>
+                    </div>
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <div class="user-info">
+                        <span id="userName">John Doe</span>
+                        <button class="logout-btn" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="dashboard-container">
+            <aside class="sidebar">
+                <ul>
+                    <li class="active" data-section="overview"><i class="fas fa-home"></i> Overview</li>
+                    <li data-section="crop-info"><i class="fas fa-seedling"></i> Crop Information</li>
+                    <li data-section="weather"><i class="fas fa-cloud-sun"></i> Weather Updates</li>
+                    <li data-section="smart-farming"><i class="fas fa-tractor"></i> Smart Farming</li>
+                    <li data-section="pests"><i class="fas fa-bug"></i> Pests & Diseases</li>
+                    <li data-section="calculator"><i class="fas fa-calculator"></i> Farm Calculator</li>
+                    <li data-section="shop"><i class="fas fa-store"></i> E-Commerce</li>
+                    <li data-section="chatbot"><i class="fas fa-robot"></i> AI Assistant</li>
+                    <li data-section="training"><i class="fas fa-video"></i> Training & Guides</li>
+                    <li data-section="helpline"><i class="fas fa-phone-alt"></i> Helpline</li>
+                    <li data-section="crop-analysis"><i class="fas fa-microscope"></i> AI Crop Analysis</li>
+                    <li data-section="analytics"><i class="fas fa-chart-line"></i> Field Analytics</li>
+                    <li data-section="monitoring"><i class="fas fa-desktop"></i> Live Monitoring</li>
+                </ul>
+            </aside>
+
+            <main class="main-content">
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <div class="language-select-container">
+                    <i class="fas fa-globe"></i>
+                    <select id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी (Hindi)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                        <option value="ml">മലയാളം (Malayalam)</option>
+                        <option value="or">ଓଡ଼ିଆ (Odia)</option>
+                    </select>
+                </div>
+                </div>
+
+                <!-- Overview Section -->
+                <section id="overview" class="dashboard-section active">
+                    <div class="dashboard-header">
+                        <h2>Dashboard Overview</h2>
+                        <div class="quick-stats">
+                            <div class="stat-card">
+                                <i class="fas fa-thermometer-half"></i>
+                                <div>
+                                    <h3>Temperature</h3>
+                                    <p>24°C</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-tint"></i>
+                                <div>
+                                    <h3>Humidity</h3>
+                                    <p>65%</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-sun"></i>
+                                <div>
+                                    <h3>Soil Moisture</h3>
+                                    <p>45%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Crop Information Hub -->
+                <section id="crop-info" class="dashboard-section">
+                    <h2>Crop Information Hub</h2>
+                    <div class="crop-filters">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search crops...">
+                        </div>
+                        <div class="filter-options">
+                            <select id="seasonFilter">
+                                <option value="">All Seasons</option>
+                                <option value="kharif">Kharif (Monsoon)</option>
+                                <option value="rabi">Rabi (Winter)</option>
+                                <option value="zaid">Zaid (Summer)</option>
+                            </select>
+                            <select id="stateFilter">
+                                <option value="">All States</option>
+                                <option value="maharashtra">Maharashtra</option>
+                                <option value="punjab">Punjab</option>
+                                <option value="up">Uttar Pradesh</option>
+                                <!-- Add more states -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="crop-grid">
+                        <div class="crop-card">
+                            <div class="crop-image">
+                                <img src="https://source.unsplash.com/400x300/?wheat-farm" alt="Wheat">
+                                <span class="season-tag">Rabi</span>
+                            </div>
+                            <div class="crop-content">
+                                <h3>Wheat (गेहूं)</h3>
+                                <div class="crop-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-seedling"></i>
+                                        <div>
+                                            <h4>Soil Requirements</h4>
+                                            <p>Well-drained loamy soil</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-cloud-rain"></i>
+                                        <div>
+                                            <h4>Water Needs</h4>
+                                            <p>450-650mm per season</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <div>
+                                            <h4>Growing Period</h4>
+                                            <p>November - April</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-temperature-high"></i>
+                                        <div>
+                                            <h4>Temperature</h4>
+                                            <p>20-25°C optimal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="crop-actions">
+                                    <button class="view-details-btn">
+                                        <i class="fas fa-info-circle"></i> View Details
+                                    </button>
+                                    <button class="add-to-farm-btn">
+                                        <i class="fas fa-plus"></i> Add to My Farm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Similar cards for Rice, Cotton, Sugarcane, etc. -->
+                    </div>
+                    <div class="pagination">
+                        <button><i class="fas fa-chevron-left"></i></button>
+                        <span>Page 1 of 5</span>
+                        <button><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </section>
+
+                <!-- Weather Updates -->
+                <section id="weather" class="dashboard-section">
+                    <h2>Weather Updates</h2>
+                    <div class="weather-container">
+                        <div class="current-weather">
+                            <h3>Current Weather</h3>
+                            <div class="weather-info">
+                                <i class="fas fa-sun"></i>
+                                <div class="temp-info">
+                                    <span class="temperature">28°C</span>
+                                    <span class="condition">Sunny</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weather-forecast">
+                            <!-- Weather forecast will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Smart Farming Dashboard -->
+                <section id="smart-farming" class="dashboard-section">
+                    <h2>Smart Farming Dashboard</h2>
+                    <div class="charts-container">
+                        <div class="chart">
+                            <canvas id="soilChart"></canvas>
+                        </div>
+                        <div class="chart">
+                            <canvas id="yieldChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pests & Disease Identifier -->
+                <section id="pests" class="dashboard-section">
+                    <h2>Pests & Disease Identifier</h2>
+                    <div class="upload-container">
+                        <div class="upload-box">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Upload Plant Image</h3>
+                            <input type="file" id="pestImage" accept="image/*">
+                            <button class="analyze-btn">Analyze Image</button>
+                        </div>
+                        <div class="analysis-result" style="display: none;">
+                            <!-- Results will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Fertilizers & Water Calculator -->
+                <section id="calculator" class="dashboard-section">
+                    <h2>Farm Calculator</h2>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Field Area (acres)</label>
+                            <input type="number" id="fieldArea" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Crop Type</label>
+                            <select id="cropType">
+                                <option value="wheat">Wheat</option>
+                                <option value="rice">Rice</option>
+                                <option value="corn">Corn</option>
+                            </select>
+                        </div>
+                        <button onclick="calculateResources()">Calculate</button>
+                        <div id="calculationResults"></div>
+                    </div>
+                </section>
+
+                <!-- E-Commerce Section -->
+                <section id="shop" class="dashboard-section">
+                    <h2>Farm Shop</h2>
+                    <div class="products-grid">
+                        <!-- Product cards will be populated by JavaScript -->
+                    </div>
+                    <div class="cart-sidebar">
+                        <h3>Shopping Cart</h3>
+                        <div id="cartItems"></div>
+                        <button class="checkout-btn">Checkout</button>
+                    </div>
+                </section>
+
+                <!-- AI Chatbot Assistant -->
+                <section id="chatbot" class="dashboard-section">
+                    <h2>AI Farm Assistant</h2>
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- Chat messages will be populated by JavaScript -->
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="userMessage" placeholder="Ask anything about farming...">
+                            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Training Videos & Guides -->
+                <section id="training" class="dashboard-section">
+                    <h2>Training & Guides</h2>
+                    <div class="training-grid">
+                        <div class="video-section">
+                            <h3>Video Tutorials</h3>
+                            <div class="video-grid">
+                                <!-- Embedded YouTube videos -->
+                                <iframe src="https://www.youtube.com/embed/dummy1"></iframe>
+                                <iframe src="https://www.youtube.com/embed/dummy2"></iframe>
+                            </div>
+                        </div>
+                        <div class="guides-section">
+                            <h3>PDF Guides</h3>
+                            <div class="guides-list">
+                                <!-- PDF links -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Helpline Integration -->
+                <section id="helpline" class="dashboard-section">
+                    <h2>Helpline Support</h2>
+                    <div class="helpline-options">
+                        <div class="helpline-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3>Call Support</h3>
+                            <p>24/7 Farmer Helpline</p>
+                            <a href="tel:1800-123-4567" class="helpline-btn">Call Now</a>
+                        </div>
+                        <div class="helpline-card">
+                            <i class="fab fa-whatsapp"></i>
+                            <h3>WhatsApp Support</h3>
+                            <p>Chat with Experts</p>
+                            <a href="https://wa.me/1234567890" class="helpline-btn">Chat Now</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Crop Analysis -->
+                <section id="crop-analysis" class="dashboard-section">
+                    <h2>AI Crop Analysis</h2>
+                    <div class="analysis-container">
+                        <div class="upload-section">
+                            <input type="file" id="cropImage" accept="image/*">
+                            <button class="analyze-btn">Analyze Crop Health</button>
+                        </div>
+                        <div class="analysis-results">
+                            <!-- Results will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Field Analytics -->
+                <section id="analytics" class="dashboard-section">
+                    <h2>Field Analytics</h2>
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <canvas id="soilAnalyticsChart"></canvas>
+                        </div>
+                        <div class="analytics-card">
+                            <canvas id="waterAnalyticsChart"></canvas>
+                        </div>
+                        <div class="analytics-card">
+                            <canvas id="yieldPredictionChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Real-time Smart Monitoring -->
+                <section id="monitoring" class="dashboard-section">
+                    <h2>Live Monitoring</h2>
+                    <div class="monitoring-grid">
+                        <div class="monitor-card">
+                            <h3>Soil Sensors</h3>
+                            <div class="sensor-readings">
+                                <!-- Real-time sensor data will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="monitor-card">
+                            <h3>Irrigation System</h3>
+                            <div class="irrigation-status">
+                                <!-- Irrigation data will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="monitor-card">
+                            <h3>Weather Station</h3>
+                            <div class="weather-readings">
+                                <!-- Weather data will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

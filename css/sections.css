@@ -1,0 +1,229 @@
+/* Crop Information Hub Styles */
+.crop-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.filter-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-options select {
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.crop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.crop-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.crop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.crop-image {
+    position: relative;
+    height: 200px;
+}
+
+.crop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.season-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-primary);
+    color: var(--text-light);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.crop-content {
+    padding: 1.5rem;
+}
+
+.crop-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.crop-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.detail-item i {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+.detail-item h4 {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.detail-item p {
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.crop-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.crop-actions button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.view-details-btn {
+    background: var(--gradient-secondary);
+    color: var(--text-light);
+}
+
+.add-to-farm-btn {
+    background: var(--gradient-primary);
+    color: var(--text-light);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background: var(--card-bg-hover);
+}
+
+.pagination span {
+    color: var(--text-secondary);
+}
+
+/* Language Selector Styles */
+.language-select-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--card-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.language-select-container i {
+    color: var(--primary-color);
+}
+
+.language-select-container select {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding-right: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .crop-filters {
+        flex-direction: column;
+    }
+    
+    .filter-options {
+        flex-wrap: wrap;
+    }
+    
+    .filter-options select {
+        flex: 1;
+        min-width: 150px;
+    }
+    
+    .crop-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .crop-actions {
+        flex-direction: column;
+    }
+}
